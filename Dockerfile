@@ -83,7 +83,7 @@ RUN pnpm install
 COPY . .
 
 # Generate optimized autoloader
-RUN composer dump-autoload --optimize
+# RUN composer dump-autoload --optimize
 
 # Build frontend assets
 # RUN npm run build
