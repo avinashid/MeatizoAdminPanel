@@ -72,23 +72,28 @@ WORKDIR /var/www/html
 COPY composer.json composer.lock ./
 
 # Install Composer dependencies
-RUN composer install --no-interaction --no-progress --prefer-dist 
-   
+RUN composer install --no-scripts --no-autoloader --ignore-platform-reqs
 
-# Install frontend dependencies
-RUN npm install -g pnpm 
+# Copy package.json and package-lock.json
+COPY package*.json ./
+RUN npm install -g pnpm
 RUN pnpm install
+
+# Copy the rest of the application
+COPY . .
+
+# Generate optimized autoloader
+RUN composer dump-autoload --optimize
 
 # Create storage directory structure if it doesn't exist
 RUN mkdir -p storage/framework/{sessions,views,cache} \
     && mkdir -p storage/logs \
     && mkdir -p bootstrap/cache
 
-# Set permissions efficiently (excluding node_modules)
+# Set correct permissions
 RUN chown -R www-data:www-data /var/www/html \
-    && chown -R root:root /var/www/html/node_modules \
-    && find /var/www/html -type f -not -path "/var/www/html/node_modules/*" -exec chmod 644 {} \; \
-    && find /var/www/html -type d -not -path "/var/www/html/node_modules/*" -exec chmod 755 {} \; \
+    && find /var/www/html -type f -exec chmod 644 {} \; \
+    && find /var/www/html -type d -exec chmod 755 {} \; \
     && chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
