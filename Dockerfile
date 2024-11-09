@@ -73,7 +73,7 @@ COPY composer.json composer.lock ./
 
 # Install Composer dependencies
 RUN composer install --no-interaction --no-progress --prefer-dist \
-    && composer dump-autoload --optimize
+    && composer dump-autoload 
 
 # Install frontend dependencies
 RUN npm install -g pnpm \
