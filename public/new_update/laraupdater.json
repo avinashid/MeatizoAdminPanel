@@ -1,0 +1,5 @@
+{
+    "version": "2.0.4",
+    "archive": "RELEASE-2.04.zip", 
+    "description": "+[Added] Twilio SMS gateway option for the OTP login and for status update messages to customer (Admin panel, website, customer app) <br/>+ [Added] Admin panel login page background image set dynamically from the admin panel settings (Admin panel) <br/>+ [Added] Search option added in many listing such as order, products, wallet history, transactions etc. (Partner app - Only in seller) <br/>+ [Added] Used latest trendy overlay cart access ui instead of older style access cart from the app bar (Customer app) <br/>+ [Improvement] Major UI improvement (Website) <br/>+ [Compatible] Flutter 3.24.2 - Seamlessly utilize the latest Flutter features (Customer app, partner app) <br/>+ [Fix] Other improvements and fixes"
+}
