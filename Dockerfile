@@ -72,7 +72,7 @@ WORKDIR /var/www/html
 COPY composer.json composer.lock ./
 
 # Install Composer dependencies
-RUN composer install --no-interaction --no-progress --prefer-dist \
+RUN composer install --no-interaction --no-progress --prefer-dist 
    
 
 # Install frontend dependencies
