@@ -76,8 +76,8 @@ RUN composer install --no-interaction --no-progress --prefer-dist \
    
 
 # Install frontend dependencies
-RUN npm install -g pnpm \
-    && pnpm install
+RUN npm install -g pnpm 
+RUN pnpm install
 
 # Create storage directory structure if it doesn't exist
 RUN mkdir -p storage/framework/{sessions,views,cache} \
